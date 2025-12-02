@@ -1,0 +1,27 @@
+.outer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    background-color: orange;
+}
+.outer > * {
+    flex: 1 1;
+}
+.nav-items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    padding: 0px 15px;
+    margin: 15px;
+}
+.right-item {
+    display: flex;
+    justify-content: right;
+}
+.button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-right: 1%;
+}
