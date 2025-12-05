@@ -14,6 +14,8 @@
     list-style: none;
     padding: 0px 15px;
     margin: 15px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 30px;
 }
 .right-item {
     display: flex;
@@ -21,7 +23,40 @@
 }
 .button {
     background: none;
-    border: none;
+    border: 1px solid rgba(0, 0, 0, 0.295);
     cursor: pointer;
-    margin-right: 1%;
+    font-size: 20px;
+    margin: 10px;
+    border-radius: 5px;
+    padding: 5px;
+}
+.button:hover {
+    background-color: rgb(174, 190, 29);
+}
+@media screen and (max-width: 580px) {
+    .outer {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        gap: 10px;
+        background-color: orange;
+    }
+    .button {
+        width: 100%;
+        background: none;
+        border: 1px solid rgba(0, 0, 0, 0.295);
+        cursor: pointer;
+        font-size: 20px;
+        margin: 10px;
+        border-radius: 5px;
+        padding: 5px;
+    }
+    .nav-items {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        list-style: none;
+        padding: 0px 15px;
+        margin: 15px;
+    }
 }
