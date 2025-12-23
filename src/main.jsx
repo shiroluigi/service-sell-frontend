@@ -9,7 +9,7 @@ import Services from './pages/Services.jsx'
 const thisRouter = createBrowserRouter([
   {
     path: '/',
-    element: <HomePage />,
+    element: <HomePage name="Shiro" />,
     errorElement: <ErrorPage />
   },
   {
