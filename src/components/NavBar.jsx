@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Modal from "../components/LoginModal.jsx";
 import '../assets/NavBar.css';
+import { GlobalUserContext } from "../helper/Context.jsx";
 
 const linksStyle = ({isActive,isPending}) => {
     return ({
@@ -11,6 +12,7 @@ const linksStyle = ({isActive,isPending}) => {
 };
 
 const NavBar = () => {
+    const {user, setUser} = useContext(GlobalUserContext);
     const [showModal, setShowModal] = useState(false);
 
     return (
@@ -22,11 +24,22 @@ const NavBar = () => {
                     <li><NavLink style={linksStyle} to={"/services"}>Services</NavLink></li>
                 </ul>
 
-                <div className="right-item">
-                    <button className='button' onClick={() => setShowModal(true)}>
-                        Login
-                    </button>
-                </div>
+                {
+                    !user &&
+                    <div className="right-item">
+                        <button className='button' onClick={() => setShowModal(true)}>
+                            Login
+                        </button>
+                    </div>
+                }
+                {
+                    user &&
+                    <div className="right-item">
+                        <button className='button' onClick={()=>{setUser(null)}}>
+                            Logout
+                        </button>
+                    </div>
+                }
             </div>
 
             {showModal && <Modal onClose={() => setShowModal(false)} />}

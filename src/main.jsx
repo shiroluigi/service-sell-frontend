@@ -1,31 +1,55 @@
-import { StrictMode } from 'react'
+import { StrictMode, useState } from 'react'
 import { createRoot } from 'react-dom/client'
-import { createBrowserRouter,RouterProvider } from 'react-router-dom'
-import HomePage from './pages/HomePage.jsx';
-import ErrorPage from './pages/ErrorPage.jsx';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import HomePage from './pages/HomePage.jsx'
+import ErrorPage from './pages/ErrorPage.jsx'
 import About from './pages/About.jsx'
 import Services from './pages/Services.jsx'
+import { GlobalUserContext } from './helper/Context.jsx'
 
 const thisRouter = createBrowserRouter([
   {
     path: '/',
-    element: <HomePage name="Shiro" />,
+    element: <HomePage />,
     errorElement: <ErrorPage />
   },
   {
-    path : '/about',
+    path: '/about',
     element: <About />,
     errorElement: <ErrorPage />
   },
   {
-    path : '/services',
+    path: '/services',
     element: <Services />,
     errorElement: <ErrorPage />
   }
 ]);
 
+function AppWrapper() {
+
+  const [user, setUser] = useState(() => {
+    const storedUser = localStorage.getItem("user");
+    return storedUser ? JSON.parse(storedUser) : null;
+  });
+
+  const updateUser = (newUser) => {
+    setUser(newUser);
+    if (newUser) {
+      localStorage.setItem("user", JSON.stringify(newUser));
+    } else {
+      localStorage.removeItem("user");
+    }
+  };
+
+  return (
+    <GlobalUserContext.Provider value={{ user, setUser: updateUser }}>
+      <RouterProvider router={thisRouter} />
+    </GlobalUserContext.Provider>
+  );
+}
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={thisRouter} />
-  </StrictMode>,
-)
+    <AppWrapper />
+  </StrictMode>
+);
