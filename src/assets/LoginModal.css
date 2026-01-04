@@ -27,3 +27,27 @@
   to   { transform: translate(-50%, -50%) scale(1); opacity: 1; }
 }
 
+.formSwitchButton {
+  background-color: none;
+  border: none;
+  background: none;
+  font-size: 15px;
+  color: green;
+}
+.formSwitchButton:hover {
+  cursor: pointer;
+}
+.closeButton {
+  width: 25%;
+  align-self: center;
+  margin-bottom: 10px;
+  border-radius: 100px;
+  border: 1px solid rgba(0, 0, 0, 0);
+  background-color: rgba(224, 39, 39, 0.637);
+  padding: 5px;
+  font-size: 15px;
+}
+.closeButton:hover {
+  cursor: pointer;
+  background-color: rgba(224, 39, 39, 0.822);
+}

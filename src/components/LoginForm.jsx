@@ -10,11 +10,14 @@ const LoginForm = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [errMsg,setErrMsg] = useState("");
 
     const loginAction = async (e) => {
         e.preventDefault();
 
         try {
+            setEmail(email.trim());
+            setPassword(password.trim());
             const response = await axios.post(
                 `${SERVER_URL}/user/login`,
                 {
@@ -23,6 +26,7 @@ const LoginForm = () => {
                 }
             );
             if (response.data.errMsg){
+                setErrMsg(response.data.errMsg);
                 console.error("Login failed: ",response.data.errMsg);
             }else{
                 setUser(response.data);
@@ -39,6 +43,7 @@ const LoginForm = () => {
 
             <label htmlFor="email">Enter Email:</label>
             <input
+                className="inputFields"
                 type="text"
                 name="email"
                 value={email}
@@ -46,14 +51,19 @@ const LoginForm = () => {
             />
 
             <label htmlFor="password">Enter Password:</label>
-            <input
+            <input 
+                className="inputFields"
                 type="password"
                 name="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
             />
-
-            <button type="submit">Go</button>
+            <button 
+                type="submit"
+                className="submitButton">
+                    Go
+                </button>
+            <span className="errorMessage">{errMsg}</span>
         </form>
     );
 };

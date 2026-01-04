@@ -5,3 +5,30 @@
 .registerForm button {
   margin-top: 10px;
 }
+.errorMessage {
+  text-align: center;
+  text-decoration: underline;
+  color: red;
+}
+.inputFields {
+  border: 1px solid rgb(148, 224, 6);
+  border-radius: 10px;
+  height: 30px;
+  padding-left: 5px;
+  font-size: 20px;
+  font-family: 'Courier New', Courier, monospace;
+}
+.submitButton {
+  width: 25%;
+  align-self: center;
+  margin-bottom: 10px;
+  border-radius: 100px;
+  border: 1px solid rgba(0, 0, 0, 0);
+  background-color: rgba(167, 167, 14, 0.582);
+  padding: 5px;
+  font-size: 15px;
+}
+.submitButton:hover {
+  cursor: pointer;
+  background-color: rgba(167, 167, 14, 0.863);
+}

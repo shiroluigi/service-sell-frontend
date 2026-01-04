@@ -22,11 +22,11 @@ const LoginModal = ({ onClose }) => {
       <div className="overlay" onClick={onClose}></div>
 
       <div className="modal">
-        {loginFormActive && <><LoginForm></LoginForm> <span>New User? <button onClick={toggleLoginRegister}> Register Here</button></span></>}
-        {registerFormActive && <><RegisterForm></RegisterForm> <span>Already have an account? <button onClick={toggleLoginRegister}> Login Here</button></span></>}
+        {loginFormActive && <><LoginForm></LoginForm> <span>New User? <button onClick={toggleLoginRegister} className="formSwitchButton"> Register Here</button></span></>}
+        {registerFormActive && <><RegisterForm></RegisterForm> <span>Already have an account? <button onClick={toggleLoginRegister} className="formSwitchButton"> Login Here</button></span></>}
         <br />
         <br />
-        <button onClick={onClose}>Close</button>
+        <button onClick={onClose} className="closeButton">Close</button>
       </div>
     </>
   );

@@ -1,19 +1,84 @@
+import { useState } from "react"
 import "../assets/RegisterForm.css"
+import axios from "axios";
+
+const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 const RegisterForm = () => {
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [errMsg,setErrMsg] = useState("");
+
+    const registerAction = async (e) => {
+        e.preventDefault();
+        try{
+            const request = {
+                firstName,
+                lastName,
+                email,
+                password
+            }
+            const response = await axios.post(
+                `${SERVER_URL}/user/register`,
+                request
+            )
+            if (response.data.errMsg){
+                setErrMsg(response.data.errMsg);
+                console.error("Registration failed: ",response.data.errMsg);
+            }else{
+                setErrMsg("Registration successful. Please Login.");
+                setTimeout(() => {
+                    window.location.reload();
+                }, 2000);
+            }
+        }catch(e){
+            console.error("Exception occured! ",e)
+        }
+    }
+
     return (
-        <form className="registerForm" method="POST">
+        <form className="registerForm" method="POST" onSubmit={registerAction}>
             <h1>Register</h1>
-            <input type="hidden" name="formType" value={"register"} />
             <label htmlFor="firstName">Enter First Name: </label>
-            <input type="text" name="firstName"></input>
+            <input 
+                className="inputFields"
+                type="text" 
+                name="firstName" 
+                value={firstName} 
+                onChange={(e) => setFirstName(e.target.value)}
+            />
             <label htmlFor="lastName">Enter Last Name: </label>
-            <input type="text" name="lastName"></input>
+            <input 
+                className="inputFields"
+                type="text" 
+                name="lastName" 
+                value={lastName} 
+                onChange={(e) => setLastName(e.target.value)}
+            />
             <label htmlFor="email">Enter Email: </label>
-            <input type="text" name="email"></input>
+            <input
+                className="inputFields" 
+                type="text" 
+                name="email" 
+                value={email} 
+                onChange={(e) => setEmail(e.target.value)}
+            />
             <label htmlFor="email">Enter Password:</label>
-            <input type="password" name="password"></input>
-            <button type="submit">Go</button>
+            <input 
+                className="inputFields"
+                type="password" 
+                name="password" 
+                value={password} 
+                onChange={(e) => setPassword(e.target.value)}
+            />
+            <button
+                className="submitButton" 
+                type="submit">
+                    Go
+                </button>
+            <span className="errorMessage">{errMsg}</span>
         </form>
     )
 }
