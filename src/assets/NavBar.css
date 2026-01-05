@@ -14,7 +14,7 @@
     list-style: none;
     padding: 0px 15px;
     margin: 15px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: "Inter", "Segoe UI", Roboto, sans-serif;
     font-size: 30px;
 }
 .right-item {
@@ -59,4 +59,11 @@
         padding: 0px 15px;
         margin: 15px;
     }
+}
+.profile-icon{
+    font-size: 2.2rem;
+    margin: 10px;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
 }

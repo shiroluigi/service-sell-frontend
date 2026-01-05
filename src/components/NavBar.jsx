@@ -3,16 +3,19 @@ import { NavLink } from "react-router-dom";
 import Modal from "../components/LoginModal.jsx";
 import '../assets/NavBar.css';
 import { GlobalUserContext } from "../helper/Context.jsx";
+import { FaUserCircle } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
-const linksStyle = ({isActive,isPending}) => {
+const linksStyle = ({ isActive, isPending }) => {
     return ({
-        textDecoration : isActive ? "underline" : "none",
+        textDecoration: isActive ? "underline" : "none",
         color: "black"
     })
 };
 
 const NavBar = () => {
-    const {user, setUser} = useContext(GlobalUserContext);
+    const navigate = useNavigate();
+    const { user, setUser } = useContext(GlobalUserContext);
     const [showModal, setShowModal] = useState(false);
 
     return (
@@ -33,9 +36,19 @@ const NavBar = () => {
                     </div>
                 }
                 {
-                    user &&
+                    user
+                    &&
                     <div className="right-item">
-                        <button className='button' onClick={()=>{setUser(null)}}>
+                        <div>
+                            <FaUserCircle
+                                onClick={
+                                    () => {
+                                        navigate("/profile")
+                                    }
+                                }
+                                className="profile-icon" />
+                        </div>
+                        <button className='button' onClick={() => { setUser(null) }}>
                             Logout
                         </button>
                     </div>

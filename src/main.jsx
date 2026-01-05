@@ -5,7 +5,13 @@ import HomePage from './pages/HomePage.jsx'
 import ErrorPage from './pages/ErrorPage.jsx'
 import About from './pages/About.jsx'
 import Services from './pages/Services.jsx'
+import Profile from './pages/Profile.jsx'
 import { GlobalUserContext } from './helper/Context.jsx'
+import ProtectedRoutes from './ProtectedRoutes.jsx'
+
+const isAuthenticated = () => {
+  return !!localStorage.getItem("user");
+}
 
 const thisRouter = createBrowserRouter([
   {
@@ -22,7 +28,17 @@ const thisRouter = createBrowserRouter([
     path: '/services',
     element: <Services />,
     errorElement: <ErrorPage />
-  }
+  },
+  {
+    element: <ProtectedRoutes isAuthenticated={isAuthenticated} />,
+    children: [
+      {
+        path: '/profile',
+        element: <Profile />,
+        errorElement: <ErrorPage />
+      },
+    ]
+  },
 ]);
 
 function AppWrapper() {

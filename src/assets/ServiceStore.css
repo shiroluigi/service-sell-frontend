@@ -1,0 +1,81 @@
+.services-container {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.services-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #ff7a18;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.service-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  min-height: 380px;
+
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.12),
+    0 16px 40px rgba(255, 122, 24, 0.15);
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.18),
+    0 22px 55px rgba(255, 122, 24, 0.25);
+}
+
+.card-content h2 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.description {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.card-footer {
+  margin-top: auto; /* keeps button fixed at bottom */
+}
+
+.price {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #ff7a18;
+  margin-bottom: 15px;
+}
+
+.buy-button {
+  width: 100%;
+  padding: 14px;
+  font-size: 1rem;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #ff7a18, #e66a10);
+  color: #ffffff;
+
+  box-shadow: 0 6px 16px rgba(255, 122, 24, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.buy-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(255, 122, 24, 0.6);
+}

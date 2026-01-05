@@ -1,0 +1,130 @@
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 3rem 1rem;
+  background: linear-gradient(
+    180deg,
+    #f9fafb 0%,
+    #ffffff 100%
+  );
+}
+
+.centeredContainer {
+  width: 100%;
+  max-width: 960px;
+  background: #ffffff;
+  padding: 3rem 3.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+  line-height: 1.8;
+  font-family: "Inter", "Segoe UI", Roboto, sans-serif;
+}
+.centeredContainer h1 {
+  font-size: 2.6rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #111827;
+}
+
+.centeredContainer h2 {
+  font-size: 1.7rem;
+  margin-top: 2.8rem;
+  margin-bottom: 1rem;
+  color: #1f2937;
+  position: relative;
+}
+
+.centeredContainer h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: orange;
+  margin-top: 0.4rem;
+  border-radius: 2px;
+}
+
+.centeredContainer p {
+  font-size: 1.05rem;
+  color: #374151;
+  margin-bottom: 1.2rem;
+}
+
+.centeredContainer strong {
+  color: orange;
+}
+
+.centeredContainer ul {
+  margin: 1rem 0 1.5rem 1.2rem;
+  padding: 0;
+}
+
+.centeredContainer li {
+  font-size: 1rem;
+  color: #374151;
+  margin-bottom: 0.6rem;
+  padding-left: 0.5rem;
+}
+
+.centeredContainer li::marker {
+  color: orange;
+}
+
+.centeredContainer a {
+  color: orange;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.centeredContainer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 1024px) {
+  .centeredContainer {
+    padding: 2.5rem 2.5rem;
+  }
+
+  .centeredContainer h1 {
+    font-size: 2.2rem;
+  }
+
+  .centeredContainer h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 2rem 0.5rem;
+  }
+
+  .centeredContainer {
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+  }
+
+  .centeredContainer h1 {
+    font-size: 1.9rem;
+  }
+
+  .centeredContainer h2 {
+    font-size: 1.3rem;
+    margin-top: 2.2rem;
+  }
+
+  .centeredContainer p,
+  .centeredContainer li {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .centeredContainer {
+    padding: 1.5rem 1.2rem;
+  }
+
+  .centeredContainer h1 {
+    font-size: 1.7rem;
+  }
+}
