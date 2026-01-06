@@ -34,7 +34,7 @@ const ServiceStore = () => {
                             </div>
 
                             <div className="card-footer">
-                                <div className="price">₹{product.price}</div>
+                                <div className="price">{product.currency} {product.price}</div>
                                 <button className="buy-button">Buy Now</button>
                             </div>
                         </div>
