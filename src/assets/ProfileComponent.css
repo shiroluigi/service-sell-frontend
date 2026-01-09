@@ -2,7 +2,6 @@
     display: flex;
     min-height: 800px;
     overflow-x: hidden;
-    margin: ;
 }
 .leftpanel{
     flex-grow: 0.3;

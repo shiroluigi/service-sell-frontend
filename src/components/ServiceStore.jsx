@@ -1,10 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import '../assets/ServiceStore.css';
 
 const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 const ServiceStore = () => {
+
+    const navigate = useNavigate();
+
     const [products, setProducts] = useState([]);
     useEffect(() => {
         getAllServices()
@@ -35,7 +39,15 @@ const ServiceStore = () => {
 
                             <div className="card-footer">
                                 <div className="price">{product.currency} {product.price}</div>
-                                <button className="buy-button">Buy Now</button>
+                                <button
+                                    className="buy-button"
+                                    onClick={
+                                        () => 
+                                        {
+                                            navigate(`/checkout/${product.id}`)
+                                        }
+                                    }>
+                                    Buy Now</button>
                             </div>
                         </div>
                     ))}

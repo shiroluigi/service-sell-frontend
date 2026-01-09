@@ -8,6 +8,7 @@ import Services from './pages/Services.jsx'
 import Profile from './pages/Profile.jsx'
 import { GlobalUserContext } from './helper/Context.jsx'
 import ProtectedRoutes from './ProtectedRoutes.jsx'
+import Checkout from './pages/Checkout.jsx'
 
 const isAuthenticated = () => {
   return !!localStorage.getItem("user");
@@ -36,6 +37,10 @@ const thisRouter = createBrowserRouter([
         path: '/profile',
         element: <Profile />,
         errorElement: <ErrorPage />
+      },
+      {
+        path: '/checkout/:serviceId',
+        element: <Checkout />
       },
     ]
   },
