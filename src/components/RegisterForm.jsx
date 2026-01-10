@@ -9,11 +9,11 @@ const RegisterForm = () => {
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [errMsg,setErrMsg] = useState("");
+    const [errMsg, setErrMsg] = useState("");
 
     const registerAction = async (e) => {
         e.preventDefault();
-        try{
+        try {
             const request = {
                 firstName,
                 lastName,
@@ -24,17 +24,13 @@ const RegisterForm = () => {
                 `${SERVER_URL}/user/register`,
                 request
             )
-            if (response.data.errMsg){
-                setErrMsg(response.data.errMsg);
-                console.error("Registration failed: ",response.data.errMsg);
-            }else{
-                setErrMsg("Registration successful. Please Login.");
-                setTimeout(() => {
-                    window.location.reload();
-                }, 2000);
-            }
-        }catch(e){
-            console.error("Exception occured! ",e)
+            setErrMsg("Registration successful. Please Login.");
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000);
+        } catch (error) {
+            console.error("Exception occured! ", error.response)
+            setErrMsg(error.response.data.errMsg);
         }
     }
 
@@ -42,42 +38,42 @@ const RegisterForm = () => {
         <form className="registerForm" method="POST" onSubmit={registerAction}>
             <h1>Register</h1>
             <label htmlFor="firstName">Enter First Name: </label>
-            <input 
+            <input
                 className="inputFields"
-                type="text" 
-                name="firstName" 
-                value={firstName} 
+                type="text"
+                name="firstName"
+                value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
             />
             <label htmlFor="lastName">Enter Last Name: </label>
-            <input 
+            <input
                 className="inputFields"
-                type="text" 
-                name="lastName" 
-                value={lastName} 
+                type="text"
+                name="lastName"
+                value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
             />
             <label htmlFor="email">Enter Email: </label>
             <input
-                className="inputFields" 
-                type="text" 
-                name="email" 
-                value={email} 
+                className="inputFields"
+                type="text"
+                name="email"
+                value={email}
                 onChange={(e) => setEmail(e.target.value)}
             />
             <label htmlFor="email">Enter Password:</label>
-            <input 
+            <input
                 className="inputFields"
-                type="password" 
-                name="password" 
-                value={password} 
+                type="password"
+                name="password"
+                value={password}
                 onChange={(e) => setPassword(e.target.value)}
             />
             <button
-                className="submitButton" 
+                className="submitButton"
                 type="submit">
-                    Go
-                </button>
+                Go
+            </button>
             <span className="errorMessage">{errMsg}</span>
         </form>
     )

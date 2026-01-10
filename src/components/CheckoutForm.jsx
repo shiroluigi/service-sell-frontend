@@ -18,20 +18,36 @@ const CheckoutForm = ({ serviceId, user }) => {
     const [refundUpi, setRefundUpi] = useState("")
 
     const [serviceInfo, setServiceInfo] = useState({});
+    
     const fetchData = async () => {
         try {
             const response = await axios.get(`${SERVER_URL}/services/single?id=${serviceId}`);
             setServiceInfo(response.data);
-            // console.log(response.data)
         } catch (e) {
             console.error(e);
         }
     }
+
     useEffect(() => {
         fetchData()
     }, []);
+
     const checkoutUserOrder = async (e) => {
         e.preventDefault();
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const phoneRegex = /^[0-9]{10,15}$/;
+
+        if (!emailRegex.test(userEmail)) {
+            alert("Please enter a valid email address.");
+            return;
+        }
+
+        if (!phoneRegex.test(userPhone)) {
+            alert("Please enter a valid phone number (10-15 digits).");
+            return;
+        }
+
         const request = {
             user: userId,
             fullName: userFullName,
@@ -42,6 +58,7 @@ const CheckoutForm = ({ serviceId, user }) => {
             refundUpi,
             service: serviceId
         }
+
         try {
             const response = await axios.post(
                 `${SERVER_URL}/order/place`,
@@ -49,13 +66,12 @@ const CheckoutForm = ({ serviceId, user }) => {
             )
             if (response.data.response == "OK") {
                 navigate("/profile");
-            } else {
-                console.error(response.data.errMsg);
             }
-        } catch (err) {
-            console.error("Error:", err)
+        } catch (error) {
+            console.error("Error:", error.response)
         }
     }
+
     return (
         <>
             <div className="checkoutForm">
@@ -123,9 +139,12 @@ const CheckoutForm = ({ serviceId, user }) => {
                                 value={userEmail}
                                 onChange={(e) => {
                                     setUserEmail(e.target.value)
-                                }} required />
+                                }} 
+                                required />
                             <input type="tel" placeholder="Phone Number"
                                 value={userPhone}
+                                pattern="[0-9]{10,15}"
+                                title="Please enter a valid phone number (10 to 15 digits)"
                                 onChange={(e) => {
                                     setUserPhone(e.target.value)
                                 }} required />

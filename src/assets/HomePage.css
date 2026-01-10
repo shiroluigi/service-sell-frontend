@@ -1,11 +1,48 @@
 .heading {
+    padding: 60px 20px 10px; 
     text-align: center;
-    padding: 10px;
-    font-size: 50px;
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #333;
 }
+
 .subtext {
     text-align: center;
-    font-size: 30px;
-    color: rgb(70, 69, 69);
-    font-style: italic;
+    font-size: 1.25rem;
+    color: #666;
+    margin-bottom: 50px;
+    font-weight: 400;
+}
+
+.projects-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+}
+
+.heading span, .subtext span {
+    display: inline-block;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .heading {
+        font-size: 2rem;
+        padding-top: 40px;
+    }
+    .subtext {
+        font-size: 1.1rem;
+    }
 }

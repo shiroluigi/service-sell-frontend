@@ -20,7 +20,7 @@ const ServiceStore = () => {
             const response = await axios.get(url);
             setProducts(response.data);
         } catch (e) {
-            console.error("Error: ", e);
+            console.error("Error: ", e.response);
         }
     }
 

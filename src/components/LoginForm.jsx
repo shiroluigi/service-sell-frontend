@@ -25,15 +25,13 @@ const LoginForm = () => {
                     password
                 }
             );
-            if (response.data.errMsg){
-                setErrMsg(response.data.errMsg);
-                console.error("Login failed: ",response.data.errMsg);
-            }else{
-                setUser(response.data);
-                window.location.reload();
-            }
+            setUser(response.data);
+            window.location.reload();
         } catch (error) {
-            console.error("Login failed:", error.response?.data || error.message);
+            console.error("Login failed:", error.response || error.message);
+            if (error.response.status == "404"){
+                setErrMsg("User not found.");
+            }
         }
     };
 
