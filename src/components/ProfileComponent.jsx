@@ -73,6 +73,8 @@ const ProfileComponent = () => {
                                                 <tr>
                                                     <td className="label">Price</td>
                                                     <td className="value">{order.price}</td>
+                                                    <td className="label">Service</td>
+                                                    <td className="value">{order.service}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
