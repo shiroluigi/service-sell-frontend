@@ -18,7 +18,6 @@ const MyProjects = () => {
                     </div>
                     <div className="buttonsContainer">
                         <button onClick={() => {gotoGithub("http://www.github.com/shiroluigi")}}>GitHub</button>
-                        {/* <button>Click me</button> */}
                     </div>
                 </div>
 
@@ -32,7 +31,6 @@ const MyProjects = () => {
                     </div>
                     <div className="buttonsContainer">
                         <button onClick={() => {gotoGithub("http://www.github.com/shiroluigi")}}>GitHub</button>
-                        {/* <button>Click me</button> */}
                     </div>
                 </div>
 
@@ -46,21 +44,6 @@ const MyProjects = () => {
                     </div>
                     <div className="buttonsContainer">
                         <button onClick={() => {gotoGithub("http://www.github.com/shiroluigi")}}>GitHub</button>
-                        {/* <button>Click me</button> */}
-                    </div>
-                </div>
-
-                <div className="card">
-                    <div className="imageContainer">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg" alt="" />
-                    </div>
-                    <div className="textContainer">
-                        <h1>Survey Application</h1>
-                        <p>Survery application aimed at institutes to conduct surverys. Used Django and JS.</p>
-                    </div>
-                    <div className="buttonsContainer">
-                        <button onClick={() => {gotoGithub("http://www.github.com/shiroluigi")}}>GitHub</button>
-                        {/* <button>Click me</button> */}
                     </div>
                 </div>
             </div>

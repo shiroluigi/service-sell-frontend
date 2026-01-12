@@ -2,77 +2,96 @@
     display: flex;
     min-height: 800px;
     overflow-x: hidden;
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #f5f5f5;
+    border-radius: 12px;
 }
 
 .leftpanel {
-    flex-grow: 0.3;
-    background: linear-gradient(to right, rgb(194, 193, 193), rgb(119, 119, 118), rgb(107, 107, 107));
-    border-top-left-radius: 10px;
-    padding: 25px;
-    box-shadow: inset -5px 0 15px rgba(0,0,0,0.1);
+    flex: 0.35;
+    background: linear-gradient(135deg, #ff7a18, #ffb88c);
+    border-top-left-radius: 12px;
+    padding: 35px 25px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    box-shadow: inset -6px 0 20px rgba(0,0,0,0.1);
 }
 
-.rightpanel {
-    flex-grow: 1;
-    background: linear-gradient(to bottom, rgb(255, 89, 89), rgb(211, 211, 211));
-    border-top-right-radius: 10px;
-    padding: 30px;
+.leftpanel h1 {
+    margin-bottom: 10px;
+    font-size: 2rem;
 }
 
 .userInfo {
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 8px;
-    backdrop-filter: blur(5px);
+    padding: 18px;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.userInfoItem {
+    padding: 10px 5px;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    display: flex;
+    gap: 6px;
 }
 
 .indicators {
-    color: rgb(40, 40, 40);
-    font-style: italic;
     font-weight: 600;
-    margin-right: 8px;
+    color: #222;
 }
 
 .indicatorsData {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: "Courier New", monospace;
     color: #000;
     font-weight: bold;
 }
 
-.userInfoItem {
-    padding: 12px 5px;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
+.rightpanel {
+    flex: 1;
+    background: linear-gradient(to bottom right, #ffffff, #efefef);
+    border-top-right-radius: 12px;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
 }
 
+.section-title {
+    font-size: 1.8rem;
+    color: #ff7a18;
+    margin-bottom: 10px;
+}
 
 .myOrders {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px;
 }
 
 .ordersCard {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.85);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    align-items: flex-start;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 14px;
+    padding: 22px;
+    border: 1px solid rgba(255, 120, 40, 0.2);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .ordersCard:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px rgba(255, 120, 40, 0.25);
     background: #ffffff;
-    border-color: rgb(255, 89, 89);
-}
-
-.leftPart {
-    flex: 3;
+    border-color: #ff7a18;
 }
 
 .leftPart table {
@@ -81,56 +100,94 @@
 }
 
 .leftPart td {
-    padding: 8px 4px;
-    color: #333;
-    font-size: 14px;
+    padding: 7px 6px;
+    font-size: 15px;
 }
 
 .leftPart tr td:nth-child(odd) {
+    width: 100px;
     font-weight: bold;
     color: #666;
-    width: 120px;
+}
+
+.value {
+    color: #222;
+}
+
+.status-tag {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    text-transform: capitalize;
+}
+
+.status-tag.completed {
+    background: #13c47f;
+    color: white;
+}
+
+.status-tag.pending {
+    background: #ffb400;
+    color: black;
+}
+
+.status-tag.failed,
+.status-tag.cancelled {
+    background: #ff5a5a;
+    color: white;
 }
 
 .rightPart {
     flex: 1;
     text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 
-.rightPart button {
-    background-color: rgb(54, 54, 54);
+.view-btn {
+    background: linear-gradient(135deg, #ff7a18, #e06100);
     color: white;
     border: none;
-    padding: 10px 24px;
-    border-radius: 6px;
+    padding: 12px 26px;
+    border-radius: 10px;
     cursor: pointer;
     font-weight: bold;
-    transition: background 0.2s;
+    font-size: 15px;
+    box-shadow: 0 6px 16px rgba(255, 120, 40, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.rightPart button:hover {
-    background-color: rgb(255, 89, 89);
+.view-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(255, 120, 40, 0.6);
 }
 
-@media (max-width: 600px) {
-    .container {
-        flex-direction: column;
-    }
-    .leftpanel {
-        border-top-right-radius: 10px;
-        flex-grow: 1;
-    }
-    .rightpanel {
-        border-top-right-radius: 0px;
-    }
+@media (max-width: 900px) {
     .ordersCard {
         flex-direction: column;
-        gap: 15px;
+        gap: 20px;
     }
     .rightPart {
         width: 100%;
+        justify-content: center;
     }
-    .rightPart button {
+    .view-btn {
         width: 100%;
+    }
+}
+
+@media (max-width: 650px) {
+    .container {
+        flex-direction: column;
+        border-radius: 0;
+    }
+    .leftpanel {
+        border-top-right-radius: 12px;
+        padding: 25px;
+    }
+    .rightpanel {
+        border-top-right-radius: 0;
     }
 }

@@ -23,13 +23,12 @@
   padding: 25px;
   display: flex;
   flex-direction: column;
-  min-height: 380px;
-
+  min-height: auto;
   box-shadow:
     0 8px 20px rgba(0, 0, 0, 0.12),
     0 16px 40px rgba(255, 122, 24, 0.15);
-
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  gap: 18px;
 }
 
 .service-card:hover {
@@ -37,6 +36,12 @@
   box-shadow:
     0 12px 30px rgba(0, 0, 0, 0.18),
     0 22px 55px rgba(255, 122, 24, 0.25);
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .card-content h2 {
@@ -51,14 +56,15 @@
 }
 
 .card-footer {
-  margin-top: auto; /* keeps button fixed at bottom */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .price {
   font-size: 1.6rem;
   font-weight: bold;
   color: #ff7a18;
-  margin-bottom: 15px;
 }
 
 .buy-button {
@@ -70,7 +76,6 @@
   cursor: pointer;
   background: linear-gradient(135deg, #ff7a18, #e66a10);
   color: #ffffff;
-
   box-shadow: 0 6px 16px rgba(255, 122, 24, 0.4);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
