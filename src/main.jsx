@@ -9,6 +9,7 @@ import Profile from './pages/Profile.jsx'
 import { GlobalUserContext } from './helper/Context.jsx'
 import ProtectedRoutes from './ProtectedRoutes.jsx'
 import Checkout from './pages/Checkout.jsx'
+import OrderDetails from './pages/OrderDetails.jsx'
 
 const isAuthenticated = () => {
   return !!localStorage.getItem("user");
@@ -32,15 +33,19 @@ const thisRouter = createBrowserRouter([
   },
   {
     element: <ProtectedRoutes isAuthenticated={isAuthenticated} />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: '/profile',
         element: <Profile />,
-        errorElement: <ErrorPage />
       },
       {
         path: '/checkout/:serviceId',
         element: <Checkout />
+      },
+      {
+        path: '/order/:orderId',
+        element: <OrderDetails />
       },
     ]
   },

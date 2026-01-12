@@ -2,10 +2,12 @@ import { useContext, useEffect, useState } from "react";
 import "../assets/ProfileComponent.css"
 import { GlobalUserContext } from "../helper/Context";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 const ProfileComponent = () => {
+    const navigate = useNavigate()
     const { user } = useContext(GlobalUserContext);
 
     const [userOrders, setUserOrders] = useState([]);
@@ -20,7 +22,7 @@ const ProfileComponent = () => {
             setUserOrders(response.data);
             console.log(response.data)
         } catch (error) {
-            console.error("Some error occured, contact developer")
+            // console.error("Some error occured, contact developer")
         }
     }
 
@@ -80,7 +82,10 @@ const ProfileComponent = () => {
                                         </table>
                                     </div>
                                     <div className="rightPart">
-                                        <button className="view-btn">View Details</button>
+                                        <button 
+                                            className="view-btn"
+                                            onClick={() => navigate(`/order/${order.id}`)}
+                                            >View Details</button>
                                     </div>
                                 </div>
                             );

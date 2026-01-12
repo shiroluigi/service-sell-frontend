@@ -32,3 +32,8 @@
   cursor: pointer;
   background-color: rgba(167, 167, 14, 0.863);
 }
+.spinner{
+  align-self: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}

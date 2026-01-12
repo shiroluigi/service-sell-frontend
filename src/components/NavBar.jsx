@@ -48,7 +48,7 @@ const NavBar = () => {
                                 }
                                 className="profile-icon" />
                         </div>
-                        <button className='button' onClick={() => { setUser(null) }}>
+                        <button className='button' onClick={() => { setUser(null); navigate("/"); }}>
                             Logout
                         </button>
                     </div>

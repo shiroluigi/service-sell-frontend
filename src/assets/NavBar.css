@@ -85,3 +85,8 @@
         text-align: center;
     }
 }
+@media print {
+    .outer{
+        display: none  !important;
+    }
+}
