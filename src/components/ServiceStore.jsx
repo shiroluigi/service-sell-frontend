@@ -21,7 +21,7 @@ const ServiceStore = () => {
 
     const getAllServices = async () => {
         setToggleSpinner(true);
-        const url = `${SERVER_URL}/services/all`;
+        const url = `${SERVER_URL}/public/services/all`;
         try {
             const response = await axios.get(url);
             setProducts(response.data);
@@ -63,12 +63,11 @@ const ServiceStore = () => {
                     </div>
                 </div>
                 :
-                <div className="spinner">
+                <div className="spinner-service-store">
                     <TailSpin
                         visible={true}
                         height="100"
                         width="100"
-                        className="spinner"
                         color="#4fa94d"
                         ariaLabel="tail-spin-loading"
                         radius="1"

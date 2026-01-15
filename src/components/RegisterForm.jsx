@@ -31,18 +31,20 @@ const RegisterForm = () => {
                 password: password.trim()
             }
             const response = await axios.post(
-                `${SERVER_URL}/user/register`,
+                `${SERVER_URL}/public/register`,
                 request
             )
+            // console.log(response)
             setErrMsg("Registration successful. Please Login.");
             setToggleSpinner(false);
             setTimeout(() => {
                 window.location.reload();
-            }, 2000);
+            }, 1000);
         } catch (error) {
-            setToggleSpinner(false);
+            if (!(error.response.status == "403"))
+                setToggleSpinner(false);
             // console.error("Exception occured! ", error.response)
-            setErrMsg(error.response.data.errMsg);
+            setErrMsg(error?.response?.data?.errMsg);
         }
     }
     useEffect(() => setErrMsg(""),[firstName,lastName,email,password,retypePassword]);
@@ -107,12 +109,11 @@ const RegisterForm = () => {
                     Go
                 </button>
                 :
-                <div className="spinner">
+                <div className="spinner-register-form">
                     <TailSpin
                         visible={true}
                         height="40"
                         width="40"
-                        className="spinner"
                         color="#4fa94d"
                         ariaLabel="tail-spin-loading"
                         radius="1"

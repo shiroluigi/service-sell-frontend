@@ -1,17 +1,25 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "../assets/OrderDetailsComponent.css";
 import axios from "axios";
 import { TailSpin } from "react-loader-spinner";
+import { GlobalUserContext } from "../helper/Context";
 
 const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 const OrderDetailsComponent = ({ orderId }) => {
+    const {user} = useContext(GlobalUserContext)
     const [order, setOrder] = useState(null);
     const [loading, setLoading] = useState(true);
 
     const getUserOrders = async () => {
         try {
-            const response = await axios.get(`${SERVER_URL}/order/${orderId.trim()}`);
+            const response = await axios.get(`${SERVER_URL}/order/${orderId.trim()}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${user.jwt}`
+                }
+            }
+        );
             setOrder(response.data);
         } catch (error) {
             console.error(error);

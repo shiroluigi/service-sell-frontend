@@ -14,11 +14,18 @@ const ProfileComponent = () => {
 
     const getUserOrders = async () => {
         try {
-            const response = await axios.post(`${SERVER_URL}/order/user`,
+            const response = await axios.post(
+                `${SERVER_URL}/order/user`,
                 {
-                    id: user.id
+                    id: user.user.id
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${user.jwt}`
+                    }
                 }
-            )
+            );
+
             setUserOrders(response.data);
             console.log(response.data)
         } catch (error) {
@@ -40,10 +47,10 @@ const ProfileComponent = () => {
                     <h1>Profile</h1>
                     <div className="userInfo">
                         <div className="userInfoItem">
-                            <span className="indicators">Name : </span><span className="indicatorsData">{user.firstName} {user.lastName}</span>
+                            <span className="indicators">Name : </span><span className="indicatorsData">{user.user.firstName} {user.lastName}</span>
                         </div>
                         <div className="userInfoItem">
-                            <span className="indicators">Email : </span><span className="indicatorsData">{user.email}</span>
+                            <span className="indicators">Email : </span><span className="indicatorsData">{user.user.email}</span>
                         </div>
                     </div>
                 </div>
@@ -82,10 +89,10 @@ const ProfileComponent = () => {
                                         </table>
                                     </div>
                                     <div className="rightPart">
-                                        <button 
+                                        <button
                                             className="view-btn"
                                             onClick={() => navigate(`/order/${order.id}`)}
-                                            >View Details</button>
+                                        >View Details</button>
                                     </div>
                                 </div>
                             );

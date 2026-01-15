@@ -23,12 +23,13 @@ const LoginForm = () => {
             setEmail(email.trim());
             setPassword(password.trim());
             const response = await axios.post(
-                `${SERVER_URL}/user/login`,
+                `${SERVER_URL}/auth/login`,
                 {
                     email,
                     password
                 }
             );
+            // console.log(response)
             setUser(response.data);
             setToggleSpinner(false);
             window.location.reload();
@@ -36,7 +37,7 @@ const LoginForm = () => {
             // console.error("Login failed:", error.response || error.message);
             if (error.response.status == "404") {
                 setToggleSpinner(false);
-                setErrMsg("User not found.");
+                setErrMsg("Username or password incorrect");
             }
         }
     };
@@ -73,12 +74,11 @@ const LoginForm = () => {
                     Go
                 </button>
                 :
-                <div className="spinner">
+                <div className="spinner-login-form">
                     <TailSpin
                         visible={true}
                         height="40"
                         width="40"
-                        className = "spinner"
                         color="#4fa94d"
                         ariaLabel="tail-spin-loading"
                         radius="1"

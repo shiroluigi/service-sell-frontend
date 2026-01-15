@@ -4,20 +4,20 @@ import LoginForm from "./LoginForm.jsx"
 import RegisterForm from "./RegisterForm.jsx";
 
 const LoginModal = ({ onClose }) => {
-    const [loginFormActive,setLoginFormActive] = useState(true);
-    const [registerFormActive,setRegisterFormActive] = useState(false);
+  const [loginFormActive, setLoginFormActive] = useState(true);
+  const [registerFormActive, setRegisterFormActive] = useState(false);
 
-    const toggleLoginRegister = () => {
-      if (loginFormActive){
-        setLoginFormActive(false)
-        setRegisterFormActive(true)
-      }else{
-        setLoginFormActive(true)
-        setRegisterFormActive(false)
-      }
+  const toggleLoginRegister = () => {
+    if (loginFormActive) {
+      setLoginFormActive(false)
+      setRegisterFormActive(true)
+    } else {
+      setLoginFormActive(true)
+      setRegisterFormActive(false)
     }
+  }
 
-    return (
+  return (
     <>
       <div className="overlay" onClick={onClose}></div>
 

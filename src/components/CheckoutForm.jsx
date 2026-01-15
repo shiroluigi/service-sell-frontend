@@ -11,10 +11,10 @@ const UPI_ADDRESS = import.meta.env.VITE_PAYMENT_UPI_ADDRESS;
 const CheckoutForm = ({ serviceId, user }) => {
     const navigate = useNavigate();
     const [toggleSpinner, setToggleSpinner] = useState(false);
-    const [userId, setUserId] = useState(user.id);
-    const [userFullName, setUserFullName] = useState(user.firstName + " " + user.lastName);
-    const [userEmail, setUserEmail] = useState(user.email);
-    const [userPhone, setUserPhone] = useState(user.phone || "");
+    const [userId, setUserId] = useState(user.user.id);
+    const [userFullName, setUserFullName] = useState(user.user.firstName + " " + user.user.lastName);
+    const [userEmail, setUserEmail] = useState(user.user.email);
+    const [userPhone, setUserPhone] = useState(user.user.phone || "");
     const [projectRequirements, setProjectRequirements] = useState("")
     const [paymentReference, setPaymentReference] = useState("")
     const [refundUpi, setRefundUpi] = useState("")
@@ -23,7 +23,7 @@ const CheckoutForm = ({ serviceId, user }) => {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get(`${SERVER_URL}/services/single?id=${serviceId}`);
+            const response = await axios.get(`${SERVER_URL}/public/services/single?id=${serviceId}`);
             setServiceInfo(response.data);
         } catch (e) {
             console.error(e);
@@ -65,7 +65,14 @@ const CheckoutForm = ({ serviceId, user }) => {
         try {
             const response = await axios.post(
                 `${SERVER_URL}/order/place`,
-                request
+                {
+                    request
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${user.jwt}`
+                    }
+                }
             )
             if (response.data.response == "OK") {
                 setToggleSpinner(false);
