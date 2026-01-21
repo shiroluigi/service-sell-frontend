@@ -66,7 +66,7 @@ const CheckoutForm = ({ serviceId, user }) => {
             const response = await axios.post(
                 `${SERVER_URL}/order/place`,
                 {
-                    request
+                    ...request
                 },
                 {
                     headers: {
