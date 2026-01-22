@@ -1,10 +1,11 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
 const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 export default function ProtectedRoutes() {
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [authorized, setAuthorized] = useState(false);
 
@@ -26,7 +27,7 @@ export default function ProtectedRoutes() {
         setAuthorized(true);
       } catch (err) {
         localStorage.removeItem("user");
-        window.location.replace("/");
+        navigate("/", { replace: true })
         setAuthorized(false);
       } finally {
         setLoading(false);
@@ -38,5 +39,5 @@ export default function ProtectedRoutes() {
 
   if (loading) return <div>Checking authentication...</div>;
 
-  return authorized ? <Outlet /> : window.location.replace("/");
+  return authorized ? <Outlet /> : navigate("/", { replace: true });
 }
