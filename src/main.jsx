@@ -10,10 +10,7 @@ import { GlobalUserContext } from './helper/Context.jsx'
 import ProtectedRoutes from './ProtectedRoutes.jsx'
 import Checkout from './pages/Checkout.jsx'
 import OrderDetails from './pages/OrderDetails.jsx'
-
-const isAuthenticated = () => {
-  return !!localStorage.getItem("user");
-}
+import Admin from './pages/Admin.jsx'
 
 const thisRouter = createBrowserRouter([
   {
@@ -32,27 +29,17 @@ const thisRouter = createBrowserRouter([
     errorElement: <ErrorPage />
   },
   {
-    element: <ProtectedRoutes isAuthenticated={isAuthenticated} />,
-    errorElement: <ErrorPage />,
+    element: <ProtectedRoutes />,
     children: [
-      {
-        path: '/profile',
-        element: <Profile />,
-      },
-      {
-        path: '/checkout/:serviceId',
-        element: <Checkout />
-      },
-      {
-        path: '/order/:orderId',
-        element: <OrderDetails />
-      },
+      { path: "/profile", element: <Profile /> },
+      { path: "/checkout/:serviceId", element: <Checkout /> },
+      { path: "/order/:orderId", element: <OrderDetails /> },
+      { path: "/admin", element: <Admin />}
     ]
   },
 ]);
 
 function AppWrapper() {
-
   const [user, setUser] = useState(() => {
     const storedUser = localStorage.getItem("user");
     return storedUser ? JSON.parse(storedUser) : null;
@@ -60,11 +47,9 @@ function AppWrapper() {
 
   const updateUser = (newUser) => {
     setUser(newUser);
-    if (newUser) {
-      localStorage.setItem("user", JSON.stringify(newUser));
-    } else {
-      localStorage.removeItem("user");
-    }
+    newUser
+      ? localStorage.setItem("user", JSON.stringify(newUser))
+      : localStorage.removeItem("user");
   };
 
   return (
@@ -73,6 +58,7 @@ function AppWrapper() {
     </GlobalUserContext.Provider>
   );
 }
+
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
