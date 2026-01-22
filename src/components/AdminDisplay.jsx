@@ -1,9 +1,12 @@
-const AdminDisplay = ({ className, allOrders, allUsers }) => {
+import AdminOrders from "./AdminOrders";
+
+const AdminDisplay = ({ className, allOrders, allUsers, allServices }) => {
     return (
         <>
             <div className={className}>
-                {allOrders && "Showing all orders"}
+                {allOrders && <AdminOrders />}
                 {allUsers && "Showing all users"}
+                {allServices && "Showing all services"}
             </div>
         </>
     );

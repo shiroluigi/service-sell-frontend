@@ -6,18 +6,20 @@ import "../assets/Admin.css";
 const AdminComponent = () => {
     const [allOrders, setAllOrders] = useState(false);
     const [allUsers, setAllUsers] = useState(false);
-
+    const [allServices, setAllServices] = useState(false);
     return (
         <div className="admin-container">
             <AdminNavigation
                 className="admin-nav"
                 setAllOrders={setAllOrders}
                 setAllUsers={setAllUsers}
+                setAllServices={setAllServices}
             />
             <AdminDisplay
                 className="admin-dis"
                 allOrders={allOrders}
                 allUsers={allUsers}
+                allServices={allServices}
             />
         </div>
     );

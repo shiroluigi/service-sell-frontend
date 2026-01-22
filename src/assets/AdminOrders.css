@@ -1,0 +1,89 @@
+.ao-container {
+    padding: 1rem;
+}
+
+.ao-title {
+    margin-bottom: 1rem;
+}
+
+.ao-loading {
+    padding: 1rem;
+}
+
+.ao-filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.ao-input,
+.ao-select {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.ao-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.ao-th,
+.ao-td {
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+}
+
+.ao-th {
+    background-color: #f5f5f5;
+    font-weight: 600;
+}
+
+.ao-row:nth-child(even) {
+    background-color: #fafafa;
+}
+
+.ao-muted {
+    color: #666;
+    font-size: 0.8rem;
+}
+
+.ao-status {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+.ao-status-ORDER_PLACED {
+    background-color: #fff3cd;
+}
+
+.ao-status-IN_PROGRESS {
+    background-color: #cfe2ff;
+}
+
+.ao-status-COMPLETED {
+    background-color: #d1e7dd;
+}
+
+.ao-status-CANCELLED {
+    background-color: #f8d7da;
+}
+
+.ao-status-PENDING_APPROVAL {
+    background-color: #fde2e2;
+}
+
+.ao-status-PAID {
+    background-color: #d1e7dd;
+}
+
+.ao-status-REFUNDED {
+    background-color: #e2e3e5;
+}
+
+.ao-edit-btn {
+    padding: 0.4rem 0.7rem;
+    cursor: pointer;
+    border: 1px solid #333;
+    background: transparent;
+}

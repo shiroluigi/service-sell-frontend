@@ -1,8 +1,9 @@
-const AdminNavigation = ({ className, setAllOrders, setAllUsers }) => {
+const AdminNavigation = ({ className, setAllOrders, setAllUsers, setAllServices}) => {
 
     const resetAll = () => {
         setAllUsers(false);
         setAllOrders(false);
+        setAllServices(false);
     }
 
     return (
@@ -12,13 +13,19 @@ const AdminNavigation = ({ className, setAllOrders, setAllUsers }) => {
                 setAllOrders(true);
 
             }}>
-                Show All Orders
+                Orders
             </button>
             <button onClick={() => {
                 resetAll();
                 setAllUsers(true);
             }}>
-                Show All Orders
+                Users
+            </button>
+            <button onClick={() => {
+                resetAll();
+                setAllServices(true);
+            }}>
+                Shop
             </button>
         </div>
     );
