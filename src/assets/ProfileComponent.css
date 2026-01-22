@@ -50,7 +50,8 @@
 .indicatorsData {
     font-family: "Courier New", monospace;
     color: #000;
-    font-weight: bold;
+    font-size: 20px;
+    font-weight: 600;
 }
 
 .rightpanel {
@@ -190,4 +191,17 @@
     .rightpanel {
         border-top-right-radius: 0;
     }
+}
+.profile-no-orders {
+    width: 100%;
+    text-align: center;
+    font-size: 40px;
+    font-style: oblique;
+    color: rgba(0, 0, 0, 0.623);
+
+}
+.profile-orders-spinner {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
 }

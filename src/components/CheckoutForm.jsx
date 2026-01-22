@@ -202,12 +202,11 @@ const CheckoutForm = ({ serviceId, user }) => {
                                     Go
                                 </button>
                                 :
-                                <div className="spinner">
+                                <div className="checkout-spinner">
                                     <TailSpin
                                         visible={true}
                                         height="40"
                                         width="40"
-                                        className="spinner"
                                         color="#4fa94d"
                                         ariaLabel="tail-spin-loading"
                                         radius="1"
