@@ -1,11 +1,10 @@
-import { Navigate, Outlet, useNavigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
 const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 export default function ProtectedRoutes() {
-  const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [authorized, setAuthorized] = useState(false);
 
@@ -20,14 +19,13 @@ export default function ProtectedRoutes() {
 
         await axios.get(`${SERVER_URL}/user/authcheck`, {
           headers: {
-            Authorization: `Bearer ${localUser.jwt}`
-          }
+            Authorization: `Bearer ${localUser.jwt}`,
+          },
         });
 
         setAuthorized(true);
-      } catch (err) {
+      } catch {
         localStorage.removeItem("user");
-        navigate("/", { replace: true })
         setAuthorized(false);
       } finally {
         setLoading(false);
@@ -39,5 +37,9 @@ export default function ProtectedRoutes() {
 
   if (loading) return <div>Checking authentication...</div>;
 
-  return authorized ? <Outlet /> : navigate("/", { replace: true });
+  if (!authorized) {
+    return <Navigate to="/" replace />;
+  }
+
+  return <Outlet />;
 }
