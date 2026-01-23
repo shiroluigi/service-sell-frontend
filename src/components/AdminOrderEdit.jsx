@@ -1,7 +1,7 @@
 import "../assets/AdminOrderEdit.css"
 import { useEffect, useState } from "react";
 
-const AdminOrderEdit = ({ order }) => {
+const AdminOrderEdit = ({ order,setOrder }) => {
     const [orderStatus, setOrderStatus] = useState(order?.orderStatus);
     const [paymentStatus, setPaymentStatus] = useState(order?.paymentStatus);
     const [orderUpdatRequestObject, setOrderUpdateRequestObject] = useState({
@@ -19,12 +19,12 @@ const AdminOrderEdit = ({ order }) => {
         )
     } , [orderStatus,paymentStatus])
     // console.log(order);
-    useEffect(() => console.log(orderUpdatRequestObject),[orderUpdatRequestObject])
+    // useEffect(() => console.log(orderUpdatRequestObject),[orderUpdatRequestObject])
     return (
         <>
             <div className="ao-container">
-                <div className="ao-title">
-                    <h2>All Orders {">"} {order.id}</h2>
+                <div className="aoe-heading" onClick={() => setOrder(null)}>
+                    <h2><span className="aoe-goback">All Orders</span> {">"} {order.id}</h2>
                 </div>
                 <div className="aoe-title">
                     <h3>Order Info</h3>

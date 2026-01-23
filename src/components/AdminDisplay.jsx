@@ -5,8 +5,8 @@ const AdminDisplay = ({ className, allOrders, allUsers, allServices , order, set
     return (
         <>
             <div className={className}>
-                {allOrders && !order && <AdminOrders orderId = {order} setOrderId = {setOrder}/>}
-                {allOrders && order && <AdminOrderEdit order = {order} />}
+                {allOrders && !order && <AdminOrders orderObject = {order} setOrderObject= {setOrder}/>}
+                {allOrders && order && <AdminOrderEdit order = {order} setOrder={setOrder} />}
                 {allUsers && "Showing all users"}
                 {allServices && "Showing all services"}
             </div>

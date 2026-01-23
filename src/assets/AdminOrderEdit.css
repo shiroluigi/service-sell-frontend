@@ -26,3 +26,26 @@
     width: 10%;
     height: 3px;
 }
+.aoe-goback{
+    position: relative;
+    color: orange;
+}
+.aoe-goback::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 3px;
+    background-color: orange;
+    transition: width 0.3s ease;
+}
+.aoe-goback:hover{
+    cursor: pointer;
+}
+.aoe-goback:hover::after{
+    width: 100%;
+}
+.aoe-heading{
+    margin-bottom: 1rem;
+}

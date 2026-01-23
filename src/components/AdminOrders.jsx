@@ -5,7 +5,7 @@ import "../assets/AdminOrders.css"
 
 const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
-const AdminOrders = ({ setOrderId, orderId }) => {
+const AdminOrders = ({ setOrderObject, orderObject }) => {
     const { user } = useContext(GlobalUserContext);
 
     const [orders, setOrders] = useState([]);
@@ -152,7 +152,7 @@ const AdminOrders = ({ setOrderId, orderId }) => {
                                 <td className="ao-td">
                                     <button
                                         className="ao-edit-btn"
-                                        onClick={() => setOrderId(order)}
+                                        onClick={() => setOrderObject(order)}
                                     >
                                         Edit
                                     </button>
