@@ -1,9 +1,10 @@
-const AdminNavigation = ({ className, setAllOrders, setAllUsers, setAllServices}) => {
+const AdminNavigation = ({ className, setAllOrders, setAllUsers, setAllServices, setOrder}) => {
 
     const resetAll = () => {
         setAllUsers(false);
         setAllOrders(false);
         setAllServices(false);
+        setOrder(null);
     }
 
     return (

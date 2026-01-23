@@ -1,0 +1,28 @@
+.aoe-table{
+    width: 100%;
+}
+.aoe-info-piece {
+    width:100%;
+}
+.aoe-inputs{
+    padding: 10px;
+    margin-left: 10px;
+    min-width: 300px;
+    box-sizing: border-box;
+    width: 100%;
+}
+.aoe-input-descriptor{
+    padding-left: 10px;
+}
+.aoe-title{
+    padding-left: 10px;
+    padding-top: 30px;
+}
+.aoe-title::after{
+    content: "";
+    display: block;
+    position: relative;
+    background-color: orange;
+    width: 10%;
+    height: 3px;
+}

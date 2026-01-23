@@ -7,6 +7,7 @@ const AdminComponent = () => {
     const [allOrders, setAllOrders] = useState(false);
     const [allUsers, setAllUsers] = useState(false);
     const [allServices, setAllServices] = useState(false);
+    const [order, setOrder] = useState();
     return (
         <div className="admin-container">
             <AdminNavigation
@@ -14,12 +15,16 @@ const AdminComponent = () => {
                 setAllOrders={setAllOrders}
                 setAllUsers={setAllUsers}
                 setAllServices={setAllServices}
+                setOrder = {setOrder}
             />
             <AdminDisplay
                 className="admin-dis"
                 allOrders={allOrders}
                 allUsers={allUsers}
                 allServices={allServices}
+                setOrder = {setOrder}
+                order = {order}
+
             />
         </div>
     );

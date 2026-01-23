@@ -16,3 +16,13 @@
     height: 100vh;
     overflow-y: auto;
 }
+@media (max-width: 768px) {
+    .admin-container {
+        flex-direction: column;
+    }
+
+    .admin-nav {
+        width: 100%;
+        flex: 0 0 0px;
+    }
+}
