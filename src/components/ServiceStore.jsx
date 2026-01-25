@@ -23,7 +23,13 @@ const ServiceStore = () => {
         setToggleSpinner(true);
         const url = `${SERVER_URL}/public/services/all`;
         try {
-            const response = await axios.get(url);
+            const response = await axios.get(url,
+                {
+                    headers:{
+                        "ngrok-skip-browser-warning": "true"
+                    }
+                }
+            );
             setProducts(response.data);
             setToggleSpinner(false);
         } catch (e) {

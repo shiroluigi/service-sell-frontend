@@ -32,7 +32,12 @@ const RegisterForm = () => {
             }
             const response = await axios.post(
                 `${SERVER_URL}/public/register`,
-                request
+                request,
+                {
+                    headers: {
+                        "ngrok-skip-browser-warning": "true"
+                    }
+                }
             )
             // console.log(response)
             setErrMsg("Registration successful. Please Login.");

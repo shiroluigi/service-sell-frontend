@@ -23,7 +23,13 @@ const CheckoutForm = ({ serviceId, user }) => {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get(`${SERVER_URL}/public/services/single?id=${serviceId}`);
+            const response = await axios.get(`${SERVER_URL}/public/services/single?id=${serviceId}`,
+                {
+                    headers: {
+                        "ngrok-skip-browser-warning": "true"
+                    }
+                }
+            );
             setServiceInfo(response.data);
         } catch (e) {
             console.error(e);
@@ -70,7 +76,8 @@ const CheckoutForm = ({ serviceId, user }) => {
                 },
                 {
                     headers: {
-                        Authorization: `Bearer ${user.jwt}`
+                        Authorization: `Bearer ${user.jwt}`,
+                        "ngrok-skip-browser-warning": "true"
                     }
                 }
             )

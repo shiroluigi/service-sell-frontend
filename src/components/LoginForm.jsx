@@ -27,6 +27,11 @@ const LoginForm = () => {
                 {
                     email,
                     password
+                },
+                {
+                    headers: {
+                        "ngrok-skip-browser-warning": "true"
+                    }
                 }
             );
             // console.log(response)

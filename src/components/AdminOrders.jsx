@@ -21,6 +21,7 @@ const AdminOrders = ({ setOrderObject, orderObject }) => {
                 {
                     headers: {
                         Authorization: `Bearer ${user.jwt}`,
+                        "ngrok-skip-browser-warning": "true"
                     },
                 }
             );

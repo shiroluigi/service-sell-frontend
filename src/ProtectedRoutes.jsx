@@ -20,6 +20,7 @@ export default function ProtectedRoutes() {
         await axios.get(`${SERVER_URL}/user/authcheck`, {
           headers: {
             Authorization: `Bearer ${localUser.jwt}`,
+            "ngrok-skip-browser-warning": "true"
           },
         });
 

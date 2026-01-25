@@ -16,7 +16,8 @@ const OrderDetailsComponent = ({ orderId }) => {
             const response = await axios.get(`${SERVER_URL}/order/${orderId.trim()}`,
             {
                 headers: {
-                    Authorization: `Bearer ${user.jwt}`
+                    Authorization: `Bearer ${user.jwt}`,
+                    "ngrok-skip-browser-warning": "true"
                 }
             }
         );

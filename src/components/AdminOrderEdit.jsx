@@ -36,7 +36,8 @@ const AdminOrderEdit = ({ order, setOrder }) => {
                 },
                 {
                     headers: {
-                        Authorization: `Bearer ${user.jwt}`
+                        Authorization: `Bearer ${user.jwt}`,
+                        "ngrok-skip-browser-warning": "true"
                     }
                 }
             )
