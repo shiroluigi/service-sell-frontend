@@ -1,0 +1,67 @@
+.au-container {
+    padding: 1rem;
+}
+
+.au-title {
+    margin-bottom: 1rem;
+    color: orange;
+}
+
+.au-filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.au-input,
+.au-select {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.au-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.au-th,
+.au-td {
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+}
+
+.au-th {
+    background-color: #f5f5f5;
+    font-weight: 600;
+}
+
+.au-row:nth-child(even) {
+    background-color: #fafafa;
+}
+
+.au-muted {
+    color: #666;
+    font-size: 0.8rem;
+}
+
+.au-role {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    display: inline-block;
+}
+
+.au-role-ADMIN {
+    background-color: #fde2e2;
+}
+
+.au-role-REGULAR_USER {
+    background-color: #e2e3e5;
+}
+
+.au-edit-btn {
+    padding: 0.4rem 0.7rem;
+    cursor: pointer;
+    border: 1px solid #333;
+    background: transparent;
+}
