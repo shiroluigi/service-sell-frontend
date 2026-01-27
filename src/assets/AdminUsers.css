@@ -64,4 +64,60 @@
     cursor: pointer;
     border: 1px solid #333;
     background: transparent;
+    height: 100%;
+    min-width: 100px;
+}
+.au-user-add-modal,
+.au-delete-user-modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333333b0;
+    z-index: 99999;
+}
+.au-user-add-box,
+.au-delete-box {
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+}
+.au-user-add-form{
+
+}
+.au-spinner-button{
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+}
+.au-spinner-button button{
+    width: 100%;
+}
+.centered{
+    text-align: center;
+}
+.smaller{
+    max-width: 100px;
+}
+.danger{
+    background-color: rgb(255, 87, 87);
+}
+.au-delete-warning-message{
+    font-size: 20px;
+}
+.au-warning-buttons{
+    display: flex;
+    justify-content: end;
+    padding: 10px;
+}
+.au-warning-buttons button {
+    width: 100px;
+}
+.warning-message{
+    color: red;
+    font-size: 25px;
+}
+.au-error-box {
+    z-index: 99999999;
 }
