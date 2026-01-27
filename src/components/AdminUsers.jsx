@@ -38,7 +38,8 @@ const AdminUsers = ({ setSeed }) => {
                 `${SERVER_URL}/user/roles`,
                 {
                     headers: {
-                        Authorization: `Bearer ${user.jwt}`
+                        Authorization: `Bearer ${user.jwt}`,
+                        "ngrok-skip-browser-warning": "true"
                     }
                 }
             );
@@ -72,7 +73,8 @@ const AdminUsers = ({ setSeed }) => {
                 `${SERVER_URL}/admin/users/all`,
                 {
                     headers: {
-                        Authorization: `Bearer ${user.jwt}`
+                        Authorization: `Bearer ${user.jwt}`,
+                        "ngrok-skip-browser-warning": "true"
                     }
                 }
             );
@@ -116,7 +118,8 @@ const AdminUsers = ({ setSeed }) => {
                 },
                 {
                     headers: {
-                        Authorization: `Bearer ${user.jwt}`
+                        Authorization: `Bearer ${user.jwt}`,
+                        "ngrok-skip-browser-warning": "true"
                     }
                 }
             )
@@ -168,7 +171,8 @@ const AdminUsers = ({ setSeed }) => {
                 },
                 {
                     headers: {
-                        Authorization: `Bearer ${user.jwt}`
+                        Authorization: `Bearer ${user.jwt}`,
+                        "ngrok-skip-browser-warning": "true"
                     }
                 }
             )
@@ -222,7 +226,8 @@ const AdminUsers = ({ setSeed }) => {
                 },
                 {
                     headers: {
-                        Authorization: `Bearer ${user.jwt}`
+                        Authorization: `Bearer ${user.jwt}`,
+                        "ngrok-skip-browser-warning": "true"
                     }
                 }
             )
