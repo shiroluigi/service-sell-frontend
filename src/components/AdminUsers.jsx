@@ -13,19 +13,23 @@ const AdminUsers = ({ setSeed }) => {
     const [allUsers, setAllUsers] = useState([]);
     const [filterRole, setFilterRole] = useState("ALL");
     const [filterSearch, setFilterSearch] = useState("");
-    const [allRoles,setAllRoles] = useState([]);
+    const [allRoles, setAllRoles] = useState([]);
 
     const [deleteUser, setDeleteUser] = useState({});
+    const [editUser, setEditUser] = useState({});
 
     const [showUserAdd, setShowUserAdd] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [userDeleteWarning, setUserDeleteWarning] = useState(false);
+    const [showUserEditModal, setShowUserEditModal] = useState(false);
 
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [userAddRole, setUserAddRole] = useState("REGULAR_USER");
+    const [userPhone, setUserPhone] = useState("");
+    const [userCountryCode, setUserCountryCode] = useState("");
     const [errMsg, setErrMsg] = useState("");
 
     const fetchRoles = async () => {
@@ -97,6 +101,7 @@ const AdminUsers = ({ setSeed }) => {
     };
 
     const addUser = async (e) => {
+        setIsLoading(true);
         e.preventDefault();
         try {
             const response = await axios.post(`${SERVER_URL}/admin/users/add`,
@@ -105,6 +110,8 @@ const AdminUsers = ({ setSeed }) => {
                     lastName,
                     email,
                     password,
+                    phone: userPhone,
+                    countryCode: userCountryCode,
                     role: userAddRole,
                 },
                 {
@@ -117,10 +124,13 @@ const AdminUsers = ({ setSeed }) => {
                 setShowUserAdd(false);
                 setSeed(Math.random());
             }
-            else
+            else {
                 setErrMsg(response?.data?.errMsg)
+            }
+            setIsLoading(false);
         } catch (error) {
-            setErrMsg(error?.response?.data?.errMsg)
+            setErrMsg(error?.response?.data?.errMsg);
+            setIsLoading(false);
         }
     }
 
@@ -129,9 +139,6 @@ const AdminUsers = ({ setSeed }) => {
         fetchRoles();
     }, []);
 
-    // const allRoles = useMemo(() => {
-    //     return [...new Set(allUsers.map(u => u.role))];
-    // }, [allUsers]);
 
     const filteredUsers = useMemo(() => {
         let result = allUsers;
@@ -195,9 +202,168 @@ const AdminUsers = ({ setSeed }) => {
         }
     }
 
+    const editUserInfo = async (e) => {
+        e.preventDefault();
+        setIsLoading(true);
+        const request = {
+            id: editUser?.id,
+            firstName: editUser?.firstName,
+            lastName: editUser?.lastName,
+            email: editUser?.email,
+            role: editUser.role,
+            password: editUser?.password,
+            phone: editUser?.phone,
+            countryCode: editUser?.countryCode
+        }
+        try {
+            const response = await axios.post(`${SERVER_URL}/admin/users/edit`,
+                {
+                    ...request
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${user.jwt}`
+                    }
+                }
+            )
+            setIsLoading(false);
+            console.log(response)
+            if (response?.status == "200")
+                setSeed(Math.random());
+        } catch (error) {
+            toast.error(error?.response?.data?.errMsg || "Server Error. Please try again.", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                style: {
+                    background: "#1a1a1a",
+                    color: "#ffffff",
+                    borderLeft: "6px solid #ff7a00",
+                    fontSize: "15px",
+                    fontWeight: "500",
+                }
+            })
+            setIsLoading(false);
+        }
+    }
+
+    // const cleanStoredData = () => {
+    //     setFirstName("");
+    //     setLastName("");
+    //     setEmail("");
+    //     setPassword("");
+    //     setUserAddRole(allRoles[0]);
+    //     setUserPhone("");
+    //     setUserCountryCode("");
+    //     setErrMsg("");
+    // }
+
     return (
         <div className="au-container">
             <ToastContainer className="au-error-box" />
+            {
+                showUserEditModal &&
+                <div className="au-user-add-modal" onClick={() => { setShowUserEditModal(false) }}>
+                    <div className="au-user-add-box" onClick={(e) => e.stopPropagation()}>
+                        <div className="au-user-add-form">
+                            <form className="registerForm" onSubmit={(e) => editUserInfo(e)}>
+                                <h1>Edit User</h1>
+                                <label htmlFor="firstName">Enter First Name: </label>
+                                <input
+                                    className="ao-input"
+                                    value={editUser?.firstName}
+                                    onChange={(e) => setEditUser((prev) => ({ ...prev, firstName: e.target.value }))}
+                                    type="text"
+                                    name="firstName"
+                                    maxLength="50"
+                                    required
+                                />
+                                <label htmlFor="lastName">Enter Last Name: </label>
+                                <input
+                                    className="ao-input"
+                                    value={editUser?.lastName}
+                                    onChange={(e) => setEditUser((prev) => ({ ...prev, lastName: e.target.value }))}
+                                    type="text"
+                                    name="lastName"
+                                    maxLength="50"
+                                    required
+                                />
+                                <label htmlFor="email">Enter Email: </label>
+                                <input
+                                    className="ao-input"
+                                    value={editUser?.email}
+                                    // onChange={(e) => setEmail(e.target.value)}
+                                    type="text"
+                                    name="email"
+                                    maxLength="50"
+                                    required
+                                    disabled
+                                />
+                                <label htmlFor="cc">Country Code: </label>
+                                <input
+                                    className="ao-input"
+                                    value={editUser?.countryCode || ""}
+                                    onChange={(e) => setEditUser((prev) => ({ ...prev, countryCode: e.target.value }))}
+                                    type="text"
+                                    name="cc"
+                                    maxLength="50"
+                                />
+                                <label htmlFor="pno">Phone Number: </label>
+                                <input
+                                    className="ao-input"
+                                    value={editUser?.phone || ""}
+                                    onChange={(e) => setEditUser((prev) => ({ ...prev, phone: e.target.value }))}
+                                    type="text"
+                                    name="pno"
+                                    maxLength="50"
+                                />
+                                <label htmlFor="password">Enter New Password:</label>
+                                <input
+                                    className="ao-input"
+                                    value={editUser?.password || ""}
+                                    onChange={(e) => setEditUser((prev) => ({ ...prev, password: e.target.value }))}
+                                    type="text"
+                                    name="password"
+                                    maxLength="50"
+                                    placeholder="Change if need else keep empty"
+                                />
+                                <label htmlFor="role">Select role:</label>
+                                {/* //TODO: fetch roles from server */}
+                                <select
+                                    className="au-select"
+                                    value={editUser?.role}
+                                    onChange={(e) => setEditUser((prev) => ({ ...prev, role: e.target.value }))}
+                                    name="role" >
+                                    {allRoles.map(r => (
+                                        <option value={r} key={r}>{r}</option>
+                                    ))}
+                                </select>
+                                <div className="au-spinner-button">
+                                    {
+                                        isLoading ?
+                                            <TailSpin
+                                                width={40}
+                                                height={40}
+                                                className="au-add-spinner"
+                                                color="black"
+                                            />
+                                            :
+                                            <button
+                                                type="submit"
+                                                className="ao-edit-btn">
+                                                Save
+                                            </button>
+                                    }
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            }
             {
                 userDeleteWarning &&
                 <div className="au-delete-user-modal">
@@ -228,7 +394,7 @@ const AdminUsers = ({ setSeed }) => {
             }
             {
                 showUserAdd &&
-                <div className="au-user-add-modal" onClick={() => setShowUserAdd(false)}>
+                <div className="au-user-add-modal" onClick={() => { setShowUserAdd(false); setErrMsg("") }}>
                     <div className="au-user-add-box" onClick={(e) => e.stopPropagation()}>
                         <div className="au-user-add-form">
                             <form className="registerForm" method="POST" onSubmit={addUser}>
@@ -262,6 +428,24 @@ const AdminUsers = ({ setSeed }) => {
                                     name="email"
                                     maxLength="50"
                                     required
+                                />
+                                <label htmlFor="cc">Enter Country Code: </label>
+                                <input
+                                    className="ao-input"
+                                    value={userCountryCode}
+                                    onChange={(e) => setUserCountryCode(e.target.value)}
+                                    type="text"
+                                    name="cc"
+                                    maxLength="50"
+                                />
+                                <label htmlFor="phone">Enter Phone: </label>
+                                <input
+                                    className="ao-input"
+                                    value={userPhone}
+                                    onChange={(e) => setUserPhone(e.target.value)}
+                                    type="text"
+                                    name="phone"
+                                    maxLength="50"
                                 />
                                 <label htmlFor="password">Enter Password:</label>
                                 <input
@@ -365,7 +549,11 @@ const AdminUsers = ({ setSeed }) => {
                                         </span>
                                     </td>
                                     <td className="au-td centered smaller">
-                                        <button className="au-edit-btn">Edit</button>
+                                        <button className="au-edit-btn"
+                                            onClick={() => {
+                                                setEditUser(user);
+                                                setShowUserEditModal(true);
+                                            }}>Edit</button>
                                         <button className="au-edit-btn danger"
                                             onClick={() => {
                                                 setUserDeleteWarning(true);
