@@ -1,8 +1,8 @@
 import { useState } from "react";
-import AdminOrderEdit from "./AdminOrderEdit";
-import AdminOrders from "./AdminOrders";
-import AdminUsers from "./AdminUsers";
-import AdminServices from "./AdminServices";
+import AdminOrderEdit from "./AdminOrderEdit.jsx";
+import AdminOrders from "./AdminOrders.jsx";
+import AdminUsers from "./AdminUsers.jsx";
+import AdminServices from "./AdminServices.jsx";
 
 const AdminDisplay = ({ className, allOrders, allUsers, allServices , order, setOrder }) => {
     const [seed, setSeed] = useState(Math.random());
