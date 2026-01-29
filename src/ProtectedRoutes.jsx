@@ -1,10 +1,14 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { GlobalUserContext } from "./helper/Context";
 
 const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 export default function ProtectedRoutes() {
+
+  const { setUser} = useContext(GlobalUserContext);
+
   const [loading, setLoading] = useState(true);
   const [authorized, setAuthorized] = useState(false);
 
@@ -28,6 +32,7 @@ export default function ProtectedRoutes() {
       } catch {
         localStorage.removeItem("user");
         setAuthorized(false);
+        setUser(null);
       } finally {
         setLoading(false);
       }
