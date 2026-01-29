@@ -50,10 +50,6 @@ const AdminOrders = ({ setOrderObject, orderObject }) => {
         });
     }, [orders, orderStatusFilter, paymentStatusFilter, search]);
 
-    const handleEdit = (order) => {
-        alert(`Edit order ${order.id}`);
-    };
-
     if (loading) {
         return <p className="ao-loading">Loading orders...</p>;
     }

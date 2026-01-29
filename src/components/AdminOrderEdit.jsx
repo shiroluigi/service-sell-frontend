@@ -6,6 +6,7 @@ import { GlobalUserContext } from "../helper/Context";
 const SERVER_URL=import.meta.env.VITE_SERVER_URL;
 
 const AdminOrderEdit = ({ order, setOrder }) => {
+    // console.log(order)
     const {user} = useContext(GlobalUserContext);
     const [isLoading,setIsLoading] = useState(false);
     const [success,setSuccess] = useState(false);
@@ -187,7 +188,7 @@ const AdminOrderEdit = ({ order, setOrder }) => {
                             <td>
                                 <div className="aoe-info-piece">
                                     <div className="aoe-input-descriptor">Service Name</div>
-                                    <input className="aoe-inputs" value={order?.service?.name} readOnly disabled />
+                                    <input className="aoe-inputs" value={order?.service?.service_name} readOnly disabled />
                                 </div>
                             </td>
                             <td>

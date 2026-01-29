@@ -4,7 +4,7 @@ import AdminDisplay from "./AdminDisplay";
 import "../assets/Admin.css";
 
 const AdminComponent = () => {
-    const [allOrders, setAllOrders] = useState(false);
+    const [allOrders, setAllOrders] = useState(true); //default
     const [allUsers, setAllUsers] = useState(false);
     const [allServices, setAllServices] = useState(false);
     const [order, setOrder] = useState();
