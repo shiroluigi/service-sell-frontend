@@ -64,7 +64,10 @@ const AdminServices = ({ seed, setSeed }) => {
         }
     }, [allServices, searchFilter])
 
-    useEffect(() => getAllServices, [])
+    useEffect(() => {
+        getAllServices();
+    }, []);
+
 
     const deleteServiceFunction = async () => {
         setIsLoading(true);
