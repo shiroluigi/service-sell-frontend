@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import '../assets/ServiceStore.css';
 import { GlobalUserContext } from "../helper/Context";
 import { TailSpin } from "react-loader-spinner";
+import { FaHeart } from "react-icons/fa";
 
 const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
@@ -46,6 +47,9 @@ const ServiceStore = () => {
                     <div className="services-grid">
                         {products.map((product) => (
                             <div className="service-card" key={product.id}>
+                                <div className="wishlist-container">
+                                    <FaHeart className="wishlist-button" />
+                                </div>
                                 <div className="card-content">
                                     <h2>{product.service_name}</h2>
                                     <p className="description">{product.description}</p>

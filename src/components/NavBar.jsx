@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import Modal from "../components/LoginModal.jsx";
 import '../assets/NavBar.css';
 import { GlobalUserContext } from "../helper/Context.jsx";
-import { FaUserCircle } from "react-icons/fa";
+import { FaUserCircle, FaHeart } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 const linksStyle = ({ isActive, isPending }) => {
@@ -44,6 +44,15 @@ const NavBar = () => {
                                 onClick={
                                     () => {
                                         navigate("/profile")
+                                    }
+                                }
+                                className="profile-icon" />
+                        </div>
+                        <div>
+                            <FaHeart
+                                onClick={
+                                    () => {
+                                        navigate("/wishlist")
                                     }
                                 }
                                 className="profile-icon" />

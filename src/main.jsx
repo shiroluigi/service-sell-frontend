@@ -11,6 +11,7 @@ import ProtectedRoutes from './ProtectedRoutes.jsx'
 import Checkout from './pages/Checkout.jsx'
 import OrderDetails from './pages/OrderDetails.jsx'
 import Admin from './pages/Admin.jsx'
+import Wishlist from './pages/Wishlist.jsx'
 
 const thisRouter = createBrowserRouter([
   {
@@ -30,11 +31,13 @@ const thisRouter = createBrowserRouter([
   },
   {
     element: <ProtectedRoutes />,
+    errorElement: <ErrorPage />,
     children: [
       { path: "/profile", element: <Profile /> },
       { path: "/checkout/:serviceId", element: <Checkout /> },
       { path: "/order/:orderId", element: <OrderDetails /> },
-      { path: "/admin", element: <Admin />}
+      { path: "/admin", element: <Admin />},
+      { path: "/wishlist", element: <Wishlist />}
     ]
   },
 ]);
