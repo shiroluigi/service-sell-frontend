@@ -1,15 +1,15 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "../assets/ProfileComponent.css"
-import { GlobalUserContext } from "../helper/Context";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { TailSpin } from "react-loader-spinner";
+import userStore from "../helper/store";
 
 const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 const ProfileComponent = () => {
     const navigate = useNavigate()
-    const { user } = useContext(GlobalUserContext);
+    const user = userStore.getState();
     const [userOrders, setUserOrders] = useState([]);
     const [ordersLoading, setOrderLoading] = useState(false);
 

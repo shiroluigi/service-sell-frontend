@@ -1,12 +1,12 @@
 import axios from "axios";
-import { useContext, useEffect, useMemo, useState } from "react";
-import { GlobalUserContext } from "../helper/Context";
+import { useEffect, useMemo, useState } from "react";
 import "../assets/AdminOrders.css"
+import userStore from "../helper/store";
 
 const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 const AdminOrders = ({ setOrderObject, orderObject }) => {
-    const { user } = useContext(GlobalUserContext);
+    const user  = userStore.getState();
 
     const [orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(true);

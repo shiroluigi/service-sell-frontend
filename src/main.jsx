@@ -54,9 +54,9 @@ function AppWrapper() {
   }
 
   return (
-    <GlobalUserContext.Provider value={{user: "gg"}}>
+    // <GlobalUserContext.Provider value={{user: "gg"}}>
       <RouterProvider router={thisRouter} />
-    </GlobalUserContext.Provider>
+    // </GlobalUserContext.Provider>
   );
 }
 

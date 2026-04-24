@@ -1,18 +1,17 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import '../assets/ServiceStore.css';
-import { GlobalUserContext } from "../helper/Context";
 import { TailSpin } from "react-loader-spinner";
 import { FaHeart } from "react-icons/fa";
+import userStore from "../helper/store";
 
 const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 const ServiceStore = () => {
 
     const [toggleSpinner, setToggleSpinner] = useState(false);
-
-    const { user } = useContext(GlobalUserContext);
+    const user = userStore.getState();
     const navigate = useNavigate();
 
     const [products, setProducts] = useState([]);

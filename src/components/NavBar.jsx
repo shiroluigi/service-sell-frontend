@@ -2,7 +2,6 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import Modal from "../components/LoginModal.jsx";
 import '../assets/NavBar.css';
-import { GlobalUserContext } from "../helper/Context.jsx";
 import { FaUserCircle, FaHeart } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import userStore from "../helper/store.js";
@@ -19,7 +18,7 @@ const linksStyle = ({ isActive, isPending }) => {
 const NavBar = () => {
     const navigate = useNavigate();
     const user = userStore.getState();
-    console.log(userStore.getState())
+    // console.log(userStore.getState())
     const [showModal, setShowModal] = useState(false);
 
     return (

@@ -1,11 +1,10 @@
-import { useContext } from "react";
 import { Navigate } from "react-router-dom";
 import AdminComponent from "../components/AdminComponent";
-import { GlobalUserContext } from "../helper/Context";
+import userStore from "../helper/store";
 import NavBar from "../components/NavBar";
 
 const Admin = () => {
-  const { user } = useContext(GlobalUserContext);
+  const user  = userStore.getState();
 
   if (!user || user.user.role !== "ADMIN") {
     return <Navigate to="/" replace />;
