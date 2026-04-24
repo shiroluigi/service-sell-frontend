@@ -12,6 +12,8 @@ import Checkout from './pages/Checkout.jsx'
 import OrderDetails from './pages/OrderDetails.jsx'
 import Admin from './pages/Admin.jsx'
 import Wishlist from './pages/Wishlist.jsx'
+import userStore from './helper/store.js'
+import { UPDATE_USER } from './helper/storeConstants.js'
 
 const thisRouter = createBrowserRouter([
   {
@@ -43,20 +45,16 @@ const thisRouter = createBrowserRouter([
 ]);
 
 function AppWrapper() {
-  const [user, setUser] = useState(() => {
-    const storedUser = localStorage.getItem("user");
-    return storedUser ? JSON.parse(storedUser) : null;
-  });
 
-  const updateUser = (newUser) => {
-    setUser(newUser);
-    newUser
-      ? localStorage.setItem("user", JSON.stringify(newUser))
-      : localStorage.removeItem("user");
-  };
+  if (localStorage.getItem("user") !== null){
+    userStore.dispatch({
+      type: UPDATE_USER,
+      payload: JSON.parse(localStorage.getItem("user"))
+    })
+  }
 
   return (
-    <GlobalUserContext.Provider value={{ user, setUser: updateUser }}>
+    <GlobalUserContext.Provider value={{user: "gg"}}>
       <RouterProvider router={thisRouter} />
     </GlobalUserContext.Provider>
   );
