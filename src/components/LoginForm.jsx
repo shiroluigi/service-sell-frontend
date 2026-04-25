@@ -41,7 +41,7 @@ const LoginForm = () => {
                 payload: response.data
             });
             setToggleSpinner(false);
-            // window.location.reload();
+            window.location.reload();
         } catch (error) {
             // console.error("Login failed:", error.response || error.message);
             if (error.response.status == "404") {
