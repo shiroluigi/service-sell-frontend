@@ -1,12 +1,12 @@
-import { useContext, useEffect } from "react";
-import { GlobalUserContext } from "../helper/Context.jsx";
+import { useEffect } from "react";
 import axios from "axios";
+import userStore from "../helper/store.js";
 
 const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 const WishlistComponent = () => {
 
-    const { user } = useContext(GlobalUserContext)
+    const user  = userStore.getState();
 
     const fetchWishlist = async () => {
         try {

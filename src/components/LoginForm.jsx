@@ -1,14 +1,13 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "../assets/LoginForm.css";
-import { GlobalUserContext } from "../helper/Context";
 import axios from "axios";
 import { TailSpin } from "react-loader-spinner";
+import userStore from "../helper/store";
+import { UPDATE_USER } from "../helper/storeConstants";
 
 const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 const LoginForm = () => {
-    const { setUser } = useContext(GlobalUserContext);
-
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errMsg, setErrMsg] = useState("");
@@ -35,7 +34,11 @@ const LoginForm = () => {
                 }
             );
             // console.log(response)
-            setUser(response.data);
+            //Dispactch to redux
+            userStore.dispatch({
+                type: UPDATE_USER,
+                payload: response.data
+            });
             setToggleSpinner(false);
             window.location.reload();
         } catch (error) {

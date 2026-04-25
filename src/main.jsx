@@ -6,12 +6,13 @@ import ErrorPage from './pages/ErrorPage.jsx'
 import About from './pages/About.jsx'
 import Services from './pages/Services.jsx'
 import Profile from './pages/Profile.jsx'
-import { GlobalUserContext } from './helper/Context.jsx'
 import ProtectedRoutes from './ProtectedRoutes.jsx'
 import Checkout from './pages/Checkout.jsx'
 import OrderDetails from './pages/OrderDetails.jsx'
 import Admin from './pages/Admin.jsx'
 import Wishlist from './pages/Wishlist.jsx'
+import userStore from './helper/store.js'
+import { UPDATE_USER } from './helper/storeConstants.js'
 
 const thisRouter = createBrowserRouter([
   {
@@ -43,22 +44,16 @@ const thisRouter = createBrowserRouter([
 ]);
 
 function AppWrapper() {
-  const [user, setUser] = useState(() => {
-    const storedUser = localStorage.getItem("user");
-    return storedUser ? JSON.parse(storedUser) : null;
-  });
 
-  const updateUser = (newUser) => {
-    setUser(newUser);
-    newUser
-      ? localStorage.setItem("user", JSON.stringify(newUser))
-      : localStorage.removeItem("user");
-  };
+  if (localStorage.getItem("user") !== null){
+    userStore.dispatch({
+      type: UPDATE_USER,
+      payload: JSON.parse(localStorage.getItem("user"))
+    })
+  }
 
   return (
-    <GlobalUserContext.Provider value={{ user, setUser: updateUser }}>
       <RouterProvider router={thisRouter} />
-    </GlobalUserContext.Provider>
   );
 }
 

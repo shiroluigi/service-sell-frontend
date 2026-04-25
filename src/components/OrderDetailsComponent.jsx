@@ -1,13 +1,13 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "../assets/OrderDetailsComponent.css";
 import axios from "axios";
 import { TailSpin } from "react-loader-spinner";
-import { GlobalUserContext } from "../helper/Context";
+import userStore from "../helper/store";
 
 const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 const OrderDetailsComponent = ({ orderId }) => {
-    const {user} = useContext(GlobalUserContext)
+    const user  = userStore.getState();
     const [order, setOrder] = useState(null);
     const [loading, setLoading] = useState(true);
 

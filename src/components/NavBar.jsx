@@ -1,10 +1,12 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import Modal from "../components/LoginModal.jsx";
 import '../assets/NavBar.css';
-import { GlobalUserContext } from "../helper/Context.jsx";
 import { FaUserCircle, FaHeart } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import userStore from "../helper/store.js";
+import { REMOVE_USER, UPDATE_USER } from "../helper/storeConstants.js";
+import { SiPayloadcms } from "react-icons/si";
 
 const linksStyle = ({ isActive, isPending }) => {
     return ({
@@ -15,7 +17,8 @@ const linksStyle = ({ isActive, isPending }) => {
 
 const NavBar = () => {
     const navigate = useNavigate();
-    const { user, setUser } = useContext(GlobalUserContext);
+    const user = userStore.getState();
+    // console.log(userStore.getState())
     const [showModal, setShowModal] = useState(false);
 
     return (
@@ -57,7 +60,9 @@ const NavBar = () => {
                                 }
                                 className="profile-icon" />
                         </div>
-                        <button className='button' onClick={() => { setUser(null); navigate("/"); }}>
+                        <button className='button' onClick={() => { userStore.dispatch({
+                            type: REMOVE_USER
+                        }); navigate("/"); }}>
                             Logout
                         </button>
                     </div>

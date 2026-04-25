@@ -2,12 +2,10 @@ import NavBar from "../components/NavBar.jsx";
 import Footer from "../components/Footer.jsx";
 import "../assets/HomePage.css"
 import MyProjects from "../components/MyProjects.jsx";
-import { useContext } from "react";
-import { GlobalUserContext } from "../helper/Context.jsx";
+import userStore from "../helper/store.js";
 
 const HomePage = () => {
-    const { user , setUser } = useContext(GlobalUserContext)
-
+    const user = userStore.getState();
     return(
         <>
             <NavBar></NavBar>

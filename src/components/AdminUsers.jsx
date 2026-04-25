@@ -1,14 +1,14 @@
 import axios from "axios";
-import { useMemo, useContext, useEffect, useState } from "react";
-import { GlobalUserContext } from "../helper/Context";
+import { useMemo, useEffect, useState } from "react";
 import "../assets/AdminUsers.css";
 import { TailSpin } from "react-loader-spinner";
 import { ToastContainer, toast } from "react-toastify";
+import userStore from "../helper/store";
 
 const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 const AdminUsers = ({ setSeed }) => {
-    const { user } = useContext(GlobalUserContext);
+    const user  = userStore.getState();
 
     const [allUsers, setAllUsers] = useState([]);
     const [filterRole, setFilterRole] = useState("ALL");

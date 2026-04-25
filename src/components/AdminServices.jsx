@@ -1,15 +1,15 @@
 import axios from "axios";
-import { useContext, useEffect, useMemo, useState } from "react";
-import { GlobalUserContext } from "../helper/Context";
+import { useEffect, useMemo, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { TailSpin } from "react-loader-spinner";
 import { IoMdAddCircleOutline } from "react-icons/io";
+import userStore from "../helper/store";
 
 const SERVER_URL = import.meta.env.VITE_SERVER_URL
 
 const AdminServices = ({ seed, setSeed }) => {
 
-    const { user } = useContext(GlobalUserContext);
+    const user  = userStore.getState();
     const [allServices, setAllServices] = useState([]);
     const [searchFilter, setSearchFilter] = useState("");
     const [initialContentLoading, setInitialContentLoading] = useState(false);
