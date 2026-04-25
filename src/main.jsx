@@ -6,7 +6,6 @@ import ErrorPage from './pages/ErrorPage.jsx'
 import About from './pages/About.jsx'
 import Services from './pages/Services.jsx'
 import Profile from './pages/Profile.jsx'
-import { GlobalUserContext } from './helper/Context.jsx'
 import ProtectedRoutes from './ProtectedRoutes.jsx'
 import Checkout from './pages/Checkout.jsx'
 import OrderDetails from './pages/OrderDetails.jsx'
@@ -54,9 +53,7 @@ function AppWrapper() {
   }
 
   return (
-    // <GlobalUserContext.Provider value={{user: "gg"}}>
       <RouterProvider router={thisRouter} />
-    // </GlobalUserContext.Provider>
   );
 }
 

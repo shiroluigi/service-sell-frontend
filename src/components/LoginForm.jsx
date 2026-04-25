@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import "../assets/LoginForm.css";
-import { GlobalUserContext } from "../helper/Context";
 import axios from "axios";
 import { TailSpin } from "react-loader-spinner";
 import userStore from "../helper/store";
