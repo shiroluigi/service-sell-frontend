@@ -19,7 +19,7 @@ const WishlistComponent = () => {
                     }
                 }
             )
-            console.log(response)
+            // console.log(response)
         } catch (error) {
             if(error.response.status == "404")
                 console.log(error)

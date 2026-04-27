@@ -10,7 +10,7 @@ const HomePage = () => {
         <>
             <NavBar></NavBar>
             <div className="heading">
-                <span>Welcome {user == null ? "" : user.firstName}!</span>
+                <span>Welcome {user?.user.firstName == null ? "" : user?.user.firstName}!</span>
             </div>
             <div className="subtext">
                 <span>Nice to have you here!</span>

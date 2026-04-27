@@ -37,6 +37,32 @@ const ServiceStore = () => {
         }
     }
 
+    const addItemToWislist = async (userId, serviceId, email) => {
+        const request = {
+            user_id: userId,
+            service_id: serviceId,
+            email
+        }
+        const url = `${SERVER_URL}/wishlist/add`;
+        try {
+            let response = await axios.post(url,
+                {
+                    ...request,
+                },
+                {
+                    headers: {
+                        "ngrok-skip-browser-warning": "true",
+                        Authorization: `Bearer ${user.jwt}`
+                    },
+                })
+                if(response.status == 201){
+                    
+                }
+        } catch (e) {
+            console.log(e)
+        }
+    } 
+
     return (
         <>
             {!toggleSpinner ?
@@ -47,7 +73,7 @@ const ServiceStore = () => {
                         {products.map((product) => (
                             <div className="service-card" key={product.id}>
                                 <div className="wishlist-container">
-                                    <FaHeart className="wishlist-button" />
+                                    <FaHeart className="wishlist-button" onClick={() => addItemToWislist(user.user.id,product.id,user.user.email)} />
                                 </div>
                                 <div className="card-content">
                                     <h2>{product.service_name}</h2>
