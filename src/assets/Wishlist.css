@@ -1,0 +1,88 @@
+.wl-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.wishlist-title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.wishlist-empty {
+    text-align: center;
+    color: #777;
+}
+
+/* STACKED LIST */
+.wishlist-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* CARD ITEM */
+.wishlist-item {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 1.2rem 1.5rem;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.wishlist-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* LEFT SIDE */
+.wishlist-left h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #222;
+}
+
+.wishlist-date {
+    margin-top: 0.3rem;
+    font-size: 0.85rem;
+    color: #777;
+}
+
+/* RIGHT SIDE */
+.wishlist-right {
+    text-align: right;
+}
+
+.wishlist-price {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #2e7d32;
+}
+
+.wishlist-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.remove-button {
+    padding: 0.4rem 0.8rem;
+    background: #e53935;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.2s ease;
+}
+
+.remove-button:hover {
+    background: #c62828;
+}
